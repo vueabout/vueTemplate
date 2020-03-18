@@ -1,5 +1,34 @@
 <template>
   <div class="wrapper">
+    <div class="pannel">
+      <h3 style="color: red;">常用布局</h3>
+      <div style="margin-bottom: 10px; margin-top: 10px;">1.左边固定宽度右边自适应长度</div>
+      <div class="flex-layout">
+        <div class="flex-left">left</div>
+        <div class="flex-right">right</div>
+      </div>
+
+      <div style="margin-bottom: 10px; margin-top: 10px;">2.中间有间隔宫格布局(缺陷：注释其中一个item查看)</div>
+      <div class="flex-grid">
+        <div class="flex-grid-item">1</div>
+        <div class="flex-grid-item">2</div>
+        <div class="flex-grid-item">3</div>
+        <div class="flex-grid-item">4</div>
+        <div class="flex-grid-item">5</div>
+        <div class="flex-grid-item">6</div>
+      </div>
+
+      <div style="margin-bottom: 10px; margin-top: 10px;">3.中间无间隔宫格布局</div>
+      <div class="flex-gri">
+        <div class="flex-gri-item">1</div>
+        <div class="flex-gri-item">2</div>
+        <div class="flex-gri-item">3</div>
+        <div class="flex-gri-item">4</div>
+        <div class="flex-gri-item">5</div>
+      </div>
+    </div>
+
+
     <div class="cu-form-group" disabled>
       <div class="title">产品名称</div>
       <input v-model="productName" placeholder="请输入" disabled/>
@@ -30,7 +59,7 @@
       <!-- <div class="filter"></div> -->
     </div>
     <div v-for="(item, index) in imgArr" :key="index" class="url-list">
-      <img :src="item" class="ul-img"></img>
+      <img :src="item" class="ul-img"/>
       <i class="img_delete" @click="deleteImg(index)"></i>
       <!-- <i class="img_delete" @click="imgArr.splice(index,1)"></i> -->
     </div>
@@ -198,6 +227,58 @@ export default {
   width: 100vw;
   height: 100vh;
   background-color: #ffffff;
+}
+
+.pannel {
+  padding: 1px 21px;
+  color: #333333;
+}
+
+/*1.*/
+.flex-layout {
+  display: flex;
+}
+
+.flex-left {
+  width: 50px;
+  height: 50px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  background: #c0191f;
+}
+
+.flex-right {
+  flex-grow: 1;
+  flex-shrink: 1;
+  background: tan;
+}
+
+/*2 */
+.flex-grid {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.flex-grid-item {
+  width: 100px;
+  height: 100px;
+  background: #c0191f;
+  margin-top: 20px;
+}
+
+/*3 */
+.flex-gri {
+  display: flex;
+  // justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.flex-gri-item {
+  width: 25%;
+  height: 100px;
+  background: #c0191f;
+  // margin-top: 20px;
 }
 
 .cu-form-group {

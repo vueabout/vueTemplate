@@ -225,7 +225,7 @@ export default {
 <style lang='less' scoped>
 .wrapper {
   width: 100vw;
-  height: 100vh;
+  // height: 100vh;
   background-color: #ffffff;
 }
 

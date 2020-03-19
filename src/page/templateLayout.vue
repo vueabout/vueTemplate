@@ -234,7 +234,7 @@ export default {
   color: #333333;
 }
 
-/*1.*/
+/*1.左边固定宽度右边自适应长度*/
 .flex-layout {
   display: flex;
 }
@@ -253,7 +253,7 @@ export default {
   background: tan;
 }
 
-/*2 */
+/*2.中间有间隔宫格布局(缺陷：注释其中一个item查看)*/
 .flex-grid {
   display: flex;
   justify-content: space-around;
@@ -267,7 +267,7 @@ export default {
   margin-top: 20px;
 }
 
-/*3 */
+/*3.中间无间隔宫格布局*/
 .flex-gri {
   display: flex;
   // justify-content: space-around;

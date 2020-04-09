@@ -42,7 +42,7 @@
 
     <div class="cu-form-group">
       <div class="title">电话<span class="red">*</span></div>
-      <input v-model="mobilePhone" placeholder="请输入"/>
+      <input v-model="mobilePhone" maxlength="11" placeholder="请输入"/>
     </div>
     <div class="cu-form-group">
       <div class="title">验证码</div>
@@ -54,7 +54,7 @@
 
     <div class="cu-form-group ti">请上传图片</div>
     <div v-if="allowAddImg" class="ti-url">
-      <input type="file" name="file" id="file" @change="changeImg($event)" accept="image/png,image/jpeg,image/gif,image/jpg" class="inputfile" /> 
+      <input type="file" name="file" id="file" @change="changeImg($event)" accept="image/*" class="inputfile" /> 
       <label for="file" class='ti-img'></label>
       <!-- <div class="filter"></div> -->
     </div>

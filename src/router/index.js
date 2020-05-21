@@ -5,6 +5,7 @@ const courierWelfare = () => import('../page/courierWelfare.vue')
 const baiduMap = () => import('../page/baiduMap.vue')
 const swiperuse = () => import('../page/swiperuse.vue')
 const templateLayout = () => import('../page/templateLayout.vue')
+const test = () => import('../page/test.vue')
 
 Vue.use(Router)
 
@@ -38,6 +39,12 @@ export default new Router({
       path: '/templateLayout',
       name: 'templateLayout',
       component: templateLayout,
+      meta:{title:'通用布局页面'}
+    },
+    {
+      path: '/test',
+      name: 'test',
+      component: test,
       meta:{title:'通用布局页面'}
     }
   ]

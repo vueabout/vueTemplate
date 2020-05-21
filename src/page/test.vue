@@ -26,6 +26,12 @@
         <div class="flex-gri-item">4</div>
         <div class="flex-gri-item">5</div>
       </div>
+
+      <div style="margin-bottom: 10px; margin-top: 10px;">4.图片文字对齐</div>
+      <div class="tii">
+          <img src="../assets/img/ta.png">
+          <span>交易工具：</span>
+      </div>
     </div>
 
 
@@ -133,10 +139,30 @@ export default {
           //   return false
           // }
           if (files.item(dd).size > imgLimit * 10240) {
-            console.log(typeof files.item(dd))
-            var formData = new FormData();
-            formData.append("file", files.item(dd));
-            console.log(formData)
+            _this.filesdata = e.target.files[0]
+            var newsrc= _this.getObjectURL(_this.filesdata);
+            _this.imgArr.splice(0, 1, newsrc)
+            _this.formData = new FormData()
+            _this.formData.append('file', _this.filesdata)
+            _this.formData.append('openId', _this.openId)
+            _this.showLoading = true
+            if (_this.imgArr.length >= 1) {
+              _this.allowAddImg = false
+            }
+            _this.$http.post('http://educationtest2.sinocare.com/education-back/front/educationSn/uploadFile', _this.formData,{
+              headers: {'Content-Type': 'multipart/form-data'}
+            }).then(res => {
+              let response = res.json()
+              if (response.status) {
+                _this.url = response.data.imgFileUrl
+                _this.showLoading = false
+                console.log(_this.url)
+              } else {
+                _this.tips = response.message;
+                _this.tosatShow = true;
+                _this.showLoading = false
+              }
+            });
             // to do sth
           } else {
             console.log('files.item(dd)', files)
@@ -346,6 +372,16 @@ export default {
   height: 100px;
   background: #c0191f;
   // margin-top: 20px;
+}
+
+/*4.图片文字对齐*/
+.tii {
+    font-size: 15px;
+    color: #333;
+    // padding: 10px;
+}
+.tii * { 
+    vertical-align:middle;
 }
 
 .cu-form-group {
